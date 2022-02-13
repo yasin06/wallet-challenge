@@ -5,9 +5,14 @@ server:
 spring:
   profiles: develop
   data.mongodb:
-    uri: mongodb://localhost:27017/playtomic
+    uri: mongodb://localhost:27017/playtomic?replicaSet=rs0
+mongo.db.name: playtomic
 stripe.simulator.charges-uri: https://sandbox.playtomic.io/v1/stripe-simulator/charges
 stripe.simulator.refunds-uri: https://sandbox.playtomic.io/v1/stripe-simulator/payments/{payment_id}/refunds
+logging:
+  level:
+    org.springframework.boot.autoconfigure.mongo: ERROR
+    org.mongodb.driver.connection: ERROR
 ---
 spring:
   profiles: test
